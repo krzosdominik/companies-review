@@ -24,10 +24,6 @@ const UserFilter = ({ companyData }) => {
         }
     }, [companyData, totalStartDate, totalEndDate]);
 
-    if (companyData) {
-        console.log(companyData)
-    }
-
     useEffect(() => {
         if (averageStartDate && averageEndDate) {
             const filter = companyData.incomes
