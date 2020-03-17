@@ -42,8 +42,8 @@ const Content = () => {
         <div className="d-flex justify-content-center">
             {isloading && (
                 <div className="d-flex flex-column pt-5 mt-5 align-items-center">
-                    <div class="spinner-grow text-info" role="status">
-                        <span class="sr-only">Loading...</span>
+                    <div className="spinner-grow text-info" role="status">
+                        <span className="sr-only">Loading...</span>
                     </div>
                     <p className="mt-5 text-info">Loading... Please wait</p>
                 </div>

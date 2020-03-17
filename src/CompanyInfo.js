@@ -22,7 +22,7 @@ const CompanyInfo = props => {
             const company = mergedData.filter(el => el.id === Number(companyId));
             setCompanyData(...company);
         }
-    }, [mergedData]);
+    }, [mergedData, companyId]);
 
     useEffect(() => {
         if (companyData && companyData.incomes) {
@@ -53,7 +53,7 @@ const CompanyInfo = props => {
         } else {
             setLastMonthTotal(`No income in ${moment(prevMonth).format('MMMM')}`);
         }
-    }, [incomesByMonth]);
+    }, [incomesByMonth, prevMonth]);
 
     return (
         <div className="container">
@@ -64,7 +64,6 @@ const CompanyInfo = props => {
                             ↩ Back
                         </Link>
                         <h1 className="text-dark">{companyData.name}</h1>
-                        <hr class="my-4 bg-primary" />
                         <div
                             className="row d-flex align-items-start"
                             style={{ width: "100%" }}

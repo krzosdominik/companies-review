@@ -17,7 +17,7 @@ const UserFilter = ({ companyData }) => {
                 .filter(({ date }) => new Date(date) <= new Date(totalEndDate))
                 .map(el => el.value);
 
-            if (filter.length != 0) {
+            if (filter.length !== 0) {
                 const total = filter.reduce((acc, curr) => Number(acc) + Number(curr)).toFixed(2);
                 setTotalFiltered(total);
             }
@@ -35,7 +35,7 @@ const UserFilter = ({ companyData }) => {
                 .filter(({ date }) => new Date(date) <= new Date(averageEndDate))
                 .map(el => el.value);
 
-            if (filter.length != 0) {
+            if (filter.length !== 0) {
                 const total = filter.reduce((acc, curr) => Number(acc) + Number(curr));
                 const average = (total / filter.length).toFixed(2);
                 setAverageFiltered(average);

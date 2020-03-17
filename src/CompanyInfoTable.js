@@ -26,7 +26,7 @@ const CompanyInfoTable = ({ companyData, lastMonthTotal }) => {
                 </tr>
                 <tr>
                     <th scope="row">Last full month income</th>
-                    {lastMonthTotal && lastMonthTotal.indexOf("No") != -1
+                    {lastMonthTotal && lastMonthTotal.indexOf("No") !== -1
                         ? <td>{lastMonthTotal}</td>
                         : <td>${lastMonthTotal}</td>}
                 </tr>
