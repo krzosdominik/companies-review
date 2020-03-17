@@ -4,7 +4,7 @@ import { useApiData } from './context/ApiData.context';
 import Table from './Table';
 
 const Content = () => {
-    const { mergedData, isloading } = useApiData();
+    const { mergedData, isloading, error } = useApiData();
     const [sortedData, setSortedData] = useState();
 
     const columns = React.useMemo(
@@ -48,7 +48,13 @@ const Content = () => {
                     <p className="mt-5 text-info">Loading... Please wait</p>
                 </div>
             )}
-            {sortedData && !isloading && <Table columns={columns} data={sortedData} />}
+            {!isloading && error && (
+                <div className="text-danger text-center">
+                <h2>Oops, something went wrong</h2>
+                <p>Please try again later.</p>
+                </div>
+            )}
+            {sortedData && !isloading && !error && <Table columns={columns} data={sortedData} />}
         </div>
     )
 };

@@ -13,16 +13,19 @@ export const ApiDataProvider = ({ children }) => {
     const [incomes, setIncomes] = useState([]);
     const [mergedData, setMergedData] = useState();
     const [isloading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         getData('companies')
             .then(data => {
                 data.forEach(company => {
                     getData(`incomes/${company.id}`)
-                        .then(data => setIncomes(incomes => [...incomes, calculateTotalIncome(data)]));
+                        .then(data => setIncomes(incomes => [...incomes, calculateTotalIncome(data)]))
+                        .catch(error => setError(error));
                 });
                 setCompanies(data);
-            });
+            })
+            .catch(error => setError(error));
     }, []);
 
     useEffect(() => {
@@ -55,7 +58,7 @@ export const ApiDataProvider = ({ children }) => {
     };
 
     return (
-        <ApiDataContext.Provider value={{ mergedData, isloading }}>
+        <ApiDataContext.Provider value={{ mergedData, isloading, error }}>
             {children}
         </ApiDataContext.Provider>
     )
